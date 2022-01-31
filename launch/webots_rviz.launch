@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+
+
+	<!-- roslaunch arguments -->
+	<arg name="no_gui" default="false" doc="Start Webots with minimal GUI"/>
+	<arg name="launch_rviz" default="false"/>
+	<arg name="world" default="$(find summit_xl_webots)/worlds/sample_world.wbt"/>
+	<!-- located in summit_xl_webots/worlds -->
+	<arg name="file_rviz" default="summitxl_a"/>
+
+    <arg name="id_robot" default="robot"/>
+    <arg name="prefix" default="$(arg id_robot)_"/>
+
+    <arg name="xacro_robot_package" default="summit_xl_description"/>
+    <arg name="xacro_robot" default="summit_xl_std.urdf.xacro"/>
+    <arg name="xacro_robot_path" default="$(eval find(xacro_robot_package) + '/robots/' + xacro_robot)"/>
+
+    <!-- GPS default position of Robotnik at Fuente del Jarro-->
+	<arg name="gps_latitude" default="39.5080331"/>
+	<arg name="gps_longitude" default="-0.4619816"/>
+	<!-- Load the URDF into the ROS Parameter Server -->
+	<param name="robot_description" command="$(find xacro)/xacro '$(arg xacro_robot_path)'
+			prefix:=$(arg prefix)
+			ros_planar_move_plugin:=false
+			omni_wheels:=false
+			gps_latitude:='$(arg gps_latitude)'
+                gps_longitude:='$(arg gps_longitude)'
+			gpu:=false
+			--inorder"/>
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+		<remap from="/joint_states" to="joint_states" />
+	</node>
+
+	<rosparam file="$(find summit_xl_webots)/control/robot.yaml" command="load" subst_value="true"/>
+	<!-- load the controllers -->
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+		/robotnik_base_control
+		">
+	</node>
+        <!-- Start Webots -->
+	<include file="$(find webots_ros)/launch/webots.launch">
+		<arg name="mode" value="realtime"/>
+		<arg name="no_gui" value="$(arg no_gui)"/>
+		<arg name="world" value="$(arg world)"/>
+	</include>
+
+	<!-- launch rviz -->
+	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find summit_xl_webots)/rviz/$(arg file_rviz).rviz"/>
+</launch>

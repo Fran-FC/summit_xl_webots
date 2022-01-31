@@ -1,0 +1,62 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.3117674734960995 0.39370498164321255 0.8647528143343486 1.4828862398463512
+  position -1.7846920949477973 -10.874091386560316 10.183737834860294
+}
+TexturedBackground {
+  texture "mars"
+}
+TexturedBackgroundLight {
+  texture "dusk"
+  castShadows FALSE
+}
+Floor {
+  size 1000 1000
+  appearance Appearance {
+    material Material {
+      ambientIntensity 0.3
+      emissiveColor 0.3 0.2 0.2
+      shininess 0.7
+    }
+  }
+}
+Wall {
+  translation -4.08 0 0
+  size 0.2 11 2.4
+}
+Wall {
+  translation 2.18 3.31 0
+  name "wall(3)"
+  size 0.2 4 2.3
+}
+Wall {
+  translation 1.32 -5.54 0
+  rotation 0 0 1 1.5708
+  name "wall(1)"
+  size 0.2 11 2.4
+}
+Wall {
+  translation 1.32 5.4 0
+  rotation 0 0 1 1.5708
+  name "wall(2)"
+  size 0.2 11 2.4
+}
+Window {
+  translation 6.73 0 0
+  size 0.2 11 2.4
+}
+SummitXl {
+  translation -1.48 0.94 0
+  name "SummitXl(1)"
+  controllerArgs [
+    "--clock"
+    "--use-sim-time"
+    "--synchronize"
+    "--auto-publish"
+    "--use-ros-control"
+    "--robot-description=robot"
+    "--name=summit_webots"
+  ]
+}
