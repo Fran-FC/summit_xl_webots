@@ -16,6 +16,7 @@ PROTO SummitXl [
   field  SFBool      selfCollision   FALSE       # Is `Robot.selfCollision`.
 ]
 {
+
 Robot {
     translation IS translation
     rotation IS rotation
@@ -819,13 +820,13 @@ Robot {
       }
     }
   ]
-  name "SummitXl"
+  name "SummitXl(2)"
   boundingObject Transform {
-    translation -0.02857 0 0.24
+    translation -0.02857 0 0.28
     rotation 0 1 0 0
     children [
       Box {
-        size 0.705985 0.385 0.48
+        size 0.68 0.34 0.32
       }
     ]
   }
@@ -840,5 +841,15 @@ Robot {
       0.004 0 0
     ]
   }
+  controller "ros"
+  controllerArgs [
+    "--clock"
+    "--use-sim-time"
+    "--synchronize"
+    "--auto-publish"
+    "--use-ros-control"
+    "--robot-description=robot"
+    "--name=summit_webots"
+  ]
 }
 }
