@@ -1,7 +1,7 @@
 #VRML_OBJ R2022a utf8
 Robot {
-  translation 2.0899999605094277 6.9091807987817285e-12 -0.009876229301459715
-  rotation 3.1019992752776665e-07 0.9999999999999439 -1.270199035293595e-07 0.0022490188023021663
+  translation -1.37426 1.67 0.0970798
+  rotation -0.011027200139964723 -0.9999380126918933 -0.0015400100195468547 -0.0009053071795861456
   children [
     Shape {
       appearance PBRAppearance {
@@ -795,13 +795,13 @@ Robot {
       }
     }
   ]
-  name "SummitXl"
+  name "SummitXl(2)"
   boundingObject Transform {
-    translation -0.02857 0 0.24
+    translation -0.02857 0 0.28
     rotation 0 1 0 0
     children [
       Box {
-        size 0.705985 0.385 0.48
+        size 0.68 0.34 0.32
       }
     ]
   }
@@ -816,4 +816,14 @@ Robot {
       0.004 0 0
     ]
   }
+  controller "ros"
+  controllerArgs [
+    "--clock"
+    "--use-sim-time"
+    "--synchronize"
+    "--auto-publish"
+    "--use-ros-control"
+    "--robot-description=robot"
+    "--name=summit_webots"
+  ]
 }
