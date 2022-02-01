@@ -9,7 +9,7 @@
 	<!-- located in summit_xl_webots/worlds -->
 	<arg name="file_rviz" default="summitxl_a"/>
 
-    <arg name="id_robot" default="robot"/>
+    <arg name="id_robot" default="summit_xl"/>
     <arg name="prefix" default="$(arg id_robot)_"/>
 
     <arg name="xacro_robot_package" default="summit_xl_description"/>
