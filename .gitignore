@@ -1,2 +1,4 @@
 *.cache
 .*.wbproj
+worlds/.sample_world.wbproj
+protos/.SummitXl.cache
