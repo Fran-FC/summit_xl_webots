@@ -3,11 +3,11 @@
 
 
 	<!-- roslaunch arguments -->
-	<arg name="no_gui" default="false" doc="Start Webots with minimal GUI"/>
-	<arg name="launch_rviz" default="false"/>
+	<arg name="no_gui" default="true" doc="Start Webots with minimal GUI"/>
+	<arg name="launch_rviz" default="true"/>
 	<arg name="world" default="$(find summit_xl_webots)/worlds/sample_world.wbt"/>
 	<!-- located in summit_xl_webots/worlds -->
-	<arg name="file_rviz" default="summitxl_a"/>
+	<arg name="file_rviz" default="default"/>
 
     <arg name="id_robot" default="summit_xl"/>
     <arg name="prefix" default="$(arg id_robot)_"/>
@@ -35,13 +35,33 @@
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
 		<remap from="/joint_states" to="joint_states" />
 	</node>
+<!-- Node that publishes joint states in topic /joint_states -->
+    <node pkg="webots_joint_states" type="joint_states_publisher" name="webots_joints" />
 
-	<rosparam file="$(find summit_xl_webots)/control/robot.yaml" command="load" subst_value="true"/>
 	<!-- load the controllers -->
+	<rosparam file="$(find summit_xl_webots)/control/robot.yaml" command="load" subst_value="true"/>
 	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
 		/robotnik_base_control
 		">
 	</node>
+
+	<!-- Start Webots -->
+	<include file="$(find webots_ros)/launch/webots.launch">
+		<arg name="mode" value="realtime"/>
+		<arg name="no_gui" value="$(arg no_gui)"/>
+		<arg name="world" value="$(arg world)"/>
+	</include>
+
+	<!-- launch rviz -->
+	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find summit_xl_webots)/rviz/$(arg file_rviz).rviz"/>
+
+
+
+
+
+
+
+
 
 	<!-- move base -->
 	<include if="$(arg launch_move_base)" file="$(find summit_xl_navigation)/launch/move_base.launch">
@@ -57,13 +77,4 @@
             <arg name="scan_topic" value="summit_xl_front_laser_sensor/laser_scan"/>
 	</include>
 
-	<!-- Start Webots -->
-	<include file="$(find webots_ros)/launch/webots.launch">
-		<arg name="mode" value="realtime"/>
-		<arg name="no_gui" value="$(arg no_gui)"/>
-		<arg name="world" value="$(arg world)"/>
-	</include>
-
-	<!-- launch rviz -->
-	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find summit_xl_webots)/rviz/$(arg file_rviz).rviz"/>
 </launch>
