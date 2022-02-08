@@ -16,8 +16,8 @@
     <arg name="xacro_robot" default="summit_xl_base.urdf.xacro"/>
     <arg name="xacro_robot_path" default="$(eval find(xacro_robot_package) + '/robots/' + xacro_robot)"/>
 
-    <arg name="launch_move_base" default="false"/>
-    <arg name="launch_gmapping" default="false"/>
+    <arg name="launch_move_base" default="true"/>
+    <arg name="launch_gmapping" default="true"/>
 
     <!-- GPS default position of Robotnik at Fuente del Jarro-->
 	<arg name="gps_latitude" default="39.5080331"/>
@@ -35,8 +35,8 @@
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
 		<remap from="/joint_states" to="joint_states" />
 	</node>
-<!-- Node that publishes joint states in topic /joint_states -->
-    <node pkg="webots_joint_states" type="joint_states_publisher" name="webots_joints" />
+	<!-- Node that publishes joint states in topic /joint_states -->
+	<include file="$(find webots_joint_states)/launch/joint_publisher.launch"/>
 
 	<!-- load the controllers -->
 	<rosparam file="$(find summit_xl_webots)/control/robot.yaml" command="load" subst_value="true"/>
@@ -55,26 +55,20 @@
 	<!-- launch rviz -->
 	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find summit_xl_webots)/rviz/$(arg file_rviz).rviz"/>
 
-
-
-
-
-
-
-
-
 	<!-- move base -->
 	<include if="$(arg launch_move_base)" file="$(find summit_xl_navigation)/launch/move_base.launch">
             <arg name="prefix" value="$(arg prefix)"/>
-            <arg name="local_planner" value="$(arg movebase_local_planner)"/>
-            <arg if="$(arg omni_drive)" name="differential_robot" value="false"/>
-            <arg unless="$(arg omni_drive)" name="differential_robot" value="true"/>
+            <!-- <arg name="local_planner" value="$(arg movebase_local_planner)"/> -->
+            <!-- <arg if="$(arg omni_drive)" name="differential_robot" value="false"/>
+            <arg unless="$(arg omni_drive)" name="differential_robot" value="true"/> -->
+            <arg name="front_scan_topic" value="/summit_webots/summit_xl_front_laser_sensor/laser_scan"/>
+			<arg name="cmd_vel_topic" value="/robotnik_base_control/cmd_vel"/>
 	</include>
 
 	<!-- Start gmapping -->
 	<include if="$(arg launch_gmapping)" file="$(find summit_xl_localization)/launch/slam_gmapping.launch">
             <arg name="prefix" value="$(arg prefix)"/>
-            <arg name="scan_topic" value="summit_xl_front_laser_sensor/laser_scan"/>
+            <arg name="scan_topic" value="/summit_webots/summit_xl_front_laser_sensor/laser_scan"/>
 	</include>
 
 </launch>
