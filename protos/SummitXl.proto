@@ -25,15 +25,6 @@ PROTO SummitXl [
 {
 
 Robot {
-    translation IS translation
-    rotation IS rotation
-	name IS name
-    controller IS controller
-    controllerArgs IS controllerArgs
-    customData IS customData
-    supervisor IS supervisor
-    synchronization IS synchronization
-    selfCollision IS selfCollision
   children [
     Shape {
       appearance PBRAppearance {
@@ -478,8 +469,8 @@ Robot {
           }
         }
         Solid {
-          translation 0 0 0.33
-          rotation 0 1 0 0
+          translation 0 2.12288e-07 0.41
+          rotation 1 0 0 3.14159
           children [
             Shape {
               appearance PBRAppearance {
@@ -827,7 +818,7 @@ Robot {
       }
     }
   ]
-  name "SummitXl(2)"
+  name "SummitXl"
   boundingObject Transform {
     translation -0.02857 0 0.28
     rotation 0 1 0 0
@@ -839,7 +830,7 @@ Robot {
   }
   physics Physics {
     density -1
-    mass 25
+    mass 65
     centerOfMass [
       0 0 0
     ]
@@ -855,7 +846,6 @@ Robot {
     "--synchronize"
     "--auto-publish"
     "--use-ros-control"
-    "--robot-description=robot"
     "--name=summit_webots"
   ]
 }
