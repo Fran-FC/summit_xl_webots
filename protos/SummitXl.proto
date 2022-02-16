@@ -158,7 +158,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_front_right_wheel_joint"
               maxVelocity 100
-              maxTorque 10000
+              maxTorque 100
             }
             PositionSensor {
               name "summit_xl_front_right_wheel_joint_sensor"
@@ -240,7 +240,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_front_left_wheel_joint"
               maxVelocity 100
-              maxTorque 10000
+              maxTorque 100
             }
             PositionSensor {
               name "summit_xl_front_left_wheel_joint_sensor"
@@ -322,7 +322,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_back_left_wheel_joint"
               maxVelocity 100
-              maxTorque 10000
+              maxTorque 100
             }
             PositionSensor {
               name "summit_xl_back_left_wheel_joint_sensor"
@@ -384,7 +384,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_back_right_wheel_joint"
               maxVelocity 100
-              maxTorque 10000
+              maxTorque 100
             }
             PositionSensor {
               name "summit_xl_back_right_wheel_joint_sensor"
