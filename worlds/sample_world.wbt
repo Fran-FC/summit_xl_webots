@@ -1,9 +1,14 @@
 #VRML_SIM R2022a utf8
 WorldInfo {
+  contactProperties [
+    ContactProperties {
+      material2 "floor"
+    }
+  ]
 }
 Viewpoint {
-  orientation 0.3563697715661452 -0.6377778822282727 -0.6828176614985242 4.911544933335411
-  position -1.9947768522754135 -3.3858463589659546 5.783902925696928
+  orientation 0.4879707964441196 0.668237479216213 -0.5615542477699309 1.8304803152764557
+  position -0.19994748378542904 0.6647966197468755 5.299933749238063
 }
 TexturedBackground {
   texture "mars"
@@ -12,18 +17,54 @@ TexturedBackgroundLight {
   texture "dusk"
   castShadows FALSE
 }
-Floor {
-  size 1000 1000
-  appearance Appearance {
-    material Material {
-      ambientIntensity 0.3
-      emissiveColor 0.3 0.2 0.2
-      shininess 0.7
-    }
-  }
-}
 Ramp30deg {
   translation -5 -1.69 0
+}
+Floor {
+  contactMaterial "floor"
+  size 100 100
+  tileSize 1 1
+}
+CardboardBox {
+  translation -0.936006 1.50749 0.3
+  rotation 0 0 1 3.14
+  size 1 0.6 0.6
+}
+CardboardBox {
+  translation -1.94003 1.50997 0.3
+  rotation 0 0 1 3.14
+  name "cardboard box(1)"
+  size 1 0.6 0.6
+}
+CardboardBox {
+  translation -8.90419 1.7051 0.3
+  rotation 0 0 1 3.14
+  name "cardboard box(2)"
+  size 1 0.6 0.6
+}
+CardboardBox {
+  translation -8.89205 0.437155 0.3
+  rotation 0 0 1 3.14
+  name "cardboard box(4)"
+  size 1 0.6 0.6
+}
+CardboardBox {
+  translation -8.26776 0.882456 0.3
+  rotation 0 0 -1 -1.569205307179586
+  name "cardboard box(5)"
+  size 1 0.6 0.6
+}
+CardboardBox {
+  translation -9.64283 1.01304 0.3
+  rotation 0 0 -1 -1.569205307179586
+  name "cardboard box(6)"
+  size 1 0.6 0.6
+}
+CardboardBox {
+  translation -2.93369 1.50926 0.3
+  rotation 0 0 1 3.14
+  name "cardboard box(3)"
+  size 1 0.6 0.6
 }
 Wall {
   translation -12.03 0 0

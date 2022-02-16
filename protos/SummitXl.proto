@@ -24,7 +24,15 @@ PROTO SummitXl [
 ]
 {
 
-Robot {
+Robot { 
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
   children [
     Shape {
       appearance PBRAppearance {
@@ -150,7 +158,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_front_right_wheel_joint"
               maxVelocity 100
-              maxTorque 100
+              maxTorque 10000
             }
             PositionSensor {
               name "summit_xl_front_right_wheel_joint_sensor"
@@ -232,7 +240,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_front_left_wheel_joint"
               maxVelocity 100
-              maxTorque 100
+              maxTorque 10000
             }
             PositionSensor {
               name "summit_xl_front_left_wheel_joint_sensor"
@@ -314,7 +322,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_back_left_wheel_joint"
               maxVelocity 100
-              maxTorque 100
+              maxTorque 10000
             }
             PositionSensor {
               name "summit_xl_back_left_wheel_joint_sensor"
@@ -376,7 +384,7 @@ Robot {
             RotationalMotor {
               name "summit_xl_back_right_wheel_joint"
               maxVelocity 100
-              maxTorque 100
+              maxTorque 10000
             }
             PositionSensor {
               name "summit_xl_back_right_wheel_joint_sensor"
