@@ -13,7 +13,7 @@
     <arg name="prefix" default="$(arg id_robot)_"/>
 
     <arg name="xacro_robot_package" default="summit_xl_description"/>
-    <arg name="xacro_robot" default="summit_xl_base.urdf.xacro"/>
+    <arg name="xacro_robot" default="summit_xl_std.urdf.xacro"/>
     <arg name="xacro_robot_path" default="$(eval find(xacro_robot_package) + '/robots/' + xacro_robot)"/>
 
     <arg name="launch_move_base" default="true"/>
@@ -36,10 +36,10 @@
 		<remap from="/joint_states" to="joint_states" />
 	</node>
 	<!-- Node that publishes joint states in topic /joint_states -->
-	<include file="$(find webots_joint_states)/launch/joint_publisher.launch"/>
+	<include file="$(find webots_joint_states)/launch/joint_publisher_summit_control.launch"/>
 
 	<!-- load the controllers -->
-	<rosparam file="$(find summit_xl_webots)/control/robot.yaml" command="load" subst_value="true"/>
+	<rosparam file="$(find summit_xl_webots)/control/robot_control.yaml" command="load" subst_value="true"/>
 	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
 		/robotnik_base_control
 		">
