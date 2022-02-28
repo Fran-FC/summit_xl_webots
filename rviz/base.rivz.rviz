@@ -5,7 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Status1
+        - /TF1/Status1
         - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 736
@@ -63,80 +63,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        robot_back_left_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_back_right_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_base_docking_contact_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot_base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_front_laser_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_front_laser_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot_front_left_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_front_rgbd_camera_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot_front_rgbd_camera_depth_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot_front_rgbd_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_front_rgbd_camera_rgb_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot_front_rgbd_camera_rgb_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        robot_front_right_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_gps_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robot_imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -176,39 +102,53 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        robot_back_left_wheel:
+        robot_a_base_docking_contact_link:
           Value: true
-        robot_back_right_wheel:
+        robot_a_base_footprint:
           Value: true
-        robot_base_docking_contact_link:
+        robot_a_base_link:
           Value: true
-        robot_base_footprint:
+        robot_a_front_laser_base_link:
           Value: true
-        robot_base_link:
+        robot_a_front_laser_link:
           Value: true
-        robot_front_laser_base_link:
+        robot_a_front_rgbd_camera_depth_frame:
           Value: true
-        robot_front_laser_link:
+        robot_a_front_rgbd_camera_depth_optical_frame:
           Value: true
-        robot_front_left_wheel:
+        robot_a_front_rgbd_camera_link:
           Value: true
-        robot_front_rgbd_camera_depth_frame:
+        robot_a_front_rgbd_camera_rgb_frame:
           Value: true
-        robot_front_rgbd_camera_depth_optical_frame:
+        robot_a_front_rgbd_camera_rgb_optical_frame:
           Value: true
-        robot_front_rgbd_camera_link:
+        robot_a_gps_base_link:
           Value: true
-        robot_front_rgbd_camera_rgb_frame:
+        robot_a_imu_link:
           Value: true
-        robot_front_rgbd_camera_rgb_optical_frame:
+        robot_b_base_docking_contact_link:
           Value: true
-        robot_front_right_wheel:
+        robot_b_base_footprint:
           Value: true
-        robot_gps_base_link:
+        robot_b_base_link:
           Value: true
-        robot_imu_link:
+        robot_b_front_laser_base_link:
           Value: true
-        robot_odom:
+        robot_b_front_laser_link:
+          Value: true
+        robot_b_front_rgbd_camera_depth_frame:
+          Value: true
+        robot_b_front_rgbd_camera_depth_optical_frame:
+          Value: true
+        robot_b_front_rgbd_camera_link:
+          Value: true
+        robot_b_front_rgbd_camera_rgb_frame:
+          Value: true
+        robot_b_front_rgbd_camera_rgb_optical_frame:
+          Value: true
+        robot_b_gps_base_link:
+          Value: true
+        robot_b_imu_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -216,40 +156,14 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        robot_odom:
-          robot_base_footprint:
-            robot_base_link:
-              robot_back_left_wheel:
-                {}
-              robot_back_right_wheel:
-                {}
-              robot_base_docking_contact_link:
-                {}
-              robot_front_laser_base_link:
-                robot_front_laser_link:
-                  {}
-              robot_front_left_wheel:
-                {}
-              robot_front_rgbd_camera_link:
-                robot_front_rgbd_camera_depth_frame:
-                  robot_front_rgbd_camera_depth_optical_frame:
-                    {}
-                robot_front_rgbd_camera_rgb_frame:
-                  robot_front_rgbd_camera_rgb_optical_frame:
-                    {}
-              robot_front_right_wheel:
-                {}
-              robot_gps_base_link:
-                {}
-              robot_imu_link:
-                {}
+        {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: robot_odom
+    Fixed Frame: summit_xl_odom
     Frame Rate: 30
   Name: root
   Tools:
