@@ -8,7 +8,7 @@ PROTO SummitXl_$(id_robot)[
   field  SFVec3f     translation     0 0 0
   field  SFRotation  rotation        0 0 1 0
   field  SFString    name            "SummitXl_$(id_robot)" # Is `Robot.name`.
-  field  SFString    controller      "robotnik_ros"      # Is `Robot.controller`.
+  field  SFString    controller      "webots_ros_interface"      # Is `Robot.controller`.
   field  MFString    controllerArgs  [
     "--clock"
     "--use-sim-time"
@@ -545,7 +545,7 @@ Robot {
               }
               geometry DEF axis_p5514 Mesh {
                 url [
-                  "/home/fran/catkin_ws/src/robotnik_sensors/meshes/axis_p5514.stl"
+                  "/home/robot/catkin_ws/src/robotnik_sensors/meshes/axis_p5514.stl"
                 ]
               }
             }
@@ -793,7 +793,7 @@ Robot {
               }
               geometry DEF antenna_3GO16 Mesh {
                 url [
-                  "/home/fran/catkin_ws/src/robotnik_sensors/meshes/antenna_3GO16.stl"
+                  "/home/robot/catkin_ws/src/robotnik_sensors/meshes/antenna_3GO16.stl"
                 ]
               }
             }
