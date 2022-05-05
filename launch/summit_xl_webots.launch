@@ -2,23 +2,25 @@
 	<!-- roslaunch arguments -->
 	<arg name="no_gui" default="false" doc="Start Webots with minimal GUI"/>
 	<arg name="launch_rviz" default="true"/>
-	<arg name="world" default="$(find summit_xl_webots)/worlds/sample_world.wbt"/>
+	<arg name="world" default="$(find summit_xl_webots)/worlds/granja.wbt"/>
 	<!-- located in summit_xl_webots/worlds -->
 	<arg name="file_rviz" default="base"/>
 
 
-<!-- Robot a -->
+	<!-- Robot a -->
     <include file="$(find summit_xl_webots)/launch/webots_base.launch">
         <arg name="id_robot" value="robot_a"/>
     </include>
 
-<!-- Robot b -->
-    <!-- <include file="$(find summit_xl_webots)/launch/webots_base.launch">
+	<!-- Robot b -->
+    <include file="$(find summit_xl_webots)/launch/webots_base.launch">
         <arg name="id_robot" value="robot_b"/>
-    </include> -->
+		<arg name="coords" value="1.0,1.0,0.0"/>
+    </include>
 
 	<!-- Start Webots -->
-	<include file="$(find webots_ros)/launch/webots.launch">
+	<!-- <include file="$(find webots_ros)/launch/webots.launch"> -->
+	<include file="$(find webots_utilities)/launch/webots.launch">
 		<arg name="mode" value="realtime"/>
 		<arg name="no_gui" value="$(arg no_gui)"/>
 		<arg name="world" value="$(arg world)"/>
